@@ -1,0 +1,79 @@
+<div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8">
+  <div class="max-w-4xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <h1 class="text-4xl font-bold text-gray-900 mb-2">
+        Hello, {{ title() }}
+      </h1>
+      <p class="text-lg text-gray-600">
+        Your app is running with NgRx Component Store and Tailwind CSS! 🎉
+      </p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Counter Section -->
+      <div class="bg-white rounded-lg shadow-lg p-6">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">
+          Counter Example
+        </h2>
+        <div class="flex items-center space-x-4">
+          <span class="text-3xl font-bold text-blue-600">{{
+            count$ | async
+          }}</span>
+          <button
+            (click)="increment()"
+            class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200"
+          >
+            Increment
+          </button>
+        </div>
+      </div>
+
+      <!-- Messages Section -->
+      <div class="bg-white rounded-lg shadow-lg p-6">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Messages</h2>
+        <div class="space-y-2">
+          @for (message of messages$ | async; track $index) {
+          <div class="bg-gray-50 p-3 rounded-lg">
+            <span class="text-gray-700">{{ message }}</span>
+          </div>
+          }
+        </div>
+        <button
+          (click)="addTimestampedMessage()"
+          class="mt-4 bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200"
+        >
+          Add Message
+        </button>
+      </div>
+    </div>
+
+    <!-- Dependencies Info -->
+    <div class="mt-8 bg-white rounded-lg shadow-lg p-6">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">
+        Installed Dependencies
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-blue-50 p-4 rounded-lg">
+          <h3 class="font-semibold text-blue-800">NgRx Component Store</h3>
+          <p class="text-sm text-blue-600">State management for components</p>
+        </div>
+        <div class="bg-green-50 p-4 rounded-lg">
+          <h3 class="font-semibold text-green-800">Tailwind CSS</h3>
+          <p class="text-sm text-green-600">Utility-first CSS framework</p>
+        </div>
+        <div class="bg-purple-50 p-4 rounded-lg">
+          <h3 class="font-semibold text-purple-800">tsx</h3>
+          <p class="text-sm text-purple-600">TypeScript execution engine</p>
+        </div>
+        <div class="bg-orange-50 p-4 rounded-lg">
+          <h3 class="font-semibold text-orange-800">OpenAI</h3>
+          <p class="text-sm text-orange-600">AI integration library</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<router-outlet />
